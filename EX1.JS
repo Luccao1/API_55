@@ -2,6 +2,8 @@ import carros2025 from './tabela carros.js';
 
 import express from 'express';
 
+import { modelocarro } from './validacao.js'
+
 const app = express();
 
 app.use(express.json());
@@ -19,6 +21,18 @@ app.get('/:sigla', (req, res) => {
     }
     res.status(200).send(carro);
 })         
+
+app.post('/', (req,res) => {
+    const novocarro = req.body;
+    const { error } = modelocarro.validate(novocarro);
+    if (error) {
+        res.status(400).send(error);
+        return;
+    }
+    carros2025.push(novocarro);
+    res.status(200).send(novocarro);
+});
+
 app.listen(3000, () =>{
     console.log("servidor rodando com sucesso na porta 3000")
 });
