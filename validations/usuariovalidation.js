@@ -1,18 +1,21 @@
-import joi from "joi";
+import Joi from "joi";
 
-export const modelousuario = joi.object({
-    nome: joi.string().min(3).required(),
-    email: joi.string().email().required(),
-    senha: joi.string().min(6).required(),
+//validação de criação
+export const modeloUsuario = Joi.object({
+  nome: Joi.string().min(3).required(),
+  email: Joi.string().email().required(),
+  senha: Joi.string().min(6).required(),
 });
 
-export const modelogin = joi.object({
-    email: joi.string().email().required(),
-    senha: joi.string().min(6).required(),
+//validadção de login
+export const modeloLogin = Joi.object({
+  email: Joi.string().email().required(),
+  senha: Joi.string().min(6).required(),
 });
 
-export const modeloatualizacaousuario = joi.object({
-    nome: joi.string().min(3),
-    email: joi.string().email(),
-    senha: joi.string().min(6),
+//validação de atualização
+export const modeloAtualizacaoUsuario = Joi.object({
+  nome: Joi.string().min(3),
+  email: Joi.string().email(),
+  senha: Joi.string().min(6),
 }).min(1);

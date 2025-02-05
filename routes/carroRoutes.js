@@ -1,22 +1,27 @@
-import express from "express";
+import Express from "express";
 import {
-    getcarros,
-    getcarro,
-    createcarro,
-    uptadecarro,
-    deletecarro,
+  getCarros,
+  getCarro,
+  createCarro,
+  updateCarro,
+  deletecarro,
 } from "../Controllers/carroController.js";
 
-const router = express.Router
+const router = Express.Router();
 
-router.get('/', getcarros);
+//rota para obter todos os carros
+router.get("/", getCarros);
 
-router.get('/:sigla', getcarro);
+//rota para obter um carro pela sigla
+router.get("/:sigla", getCarro);
 
-router.post('/', createcarro);
+//rota para criar um carro
+router.post("/", createCarro);
 
-router.put("/:sigla", updatecarro);
+//rota para atualizar o carro
+router.put("/:sigla", updateCarro);
 
+//rota para deletar o carro
 router.delete("/:sigla", deletecarro);
 
 export default router;
